@@ -1,0 +1,56 @@
+#Step 1 : Check the list available storage devices and partitions             
+
+$ sudo part - l
+
+//term;inal prints
+//model, disk, sector size, partition table, disk flags
+
+//Note:
+//The first storage disk (dev/sda or dev/vda) contains the operating system. Creating a partition on this disk can make your system unbootable. 
+//Only create partitions on secondary disks (dev/sdb, dev/sdc, dev/vdb, or dev/vdc).
+
+#Step 2: Update the package
+
+$ sudo apt update
+
+//Terminal prints
+//Hit:1, Get:2, etc
+//Fetched 3,065 kB in 10s (305 kB/s)
+//Reading package list, Building dependency tree, Reading state information.
+//105 packages can be upgrade. Run 'apt list --upgradable' to see them.
+
+#Step 3: Install parted utility
+
+$ sudo apt install parted
+
+//terminal prints
+//reading package lists, building dependency tree, reading state information.
+//parted is already the newest version (3.4-2build1).
+
+#Step 4: Check absence partitioning scheme 
+
+$ sudo parted -l | grep Error
+
+//it will produce an error for any disks that don’t have a valid partition scheme. This unrecognized disk label error means for the new, unpartitioned disk
+
+//terminal prints
+//Warning: Unable to open /dev/sr0 read-write (Read-only file system).  /dev/sr0 has been opened read-only. e
+//Error: /dev/sr0 : unrecognized disk label.
+//Warning: Unable to open /dev/sr1 read-write (Read-only file system).  /dev/sr1 has been opened read-only. e
+//Error: /dev/sr1 : unrecognized disk label.
+
+
+#Step 5 : Check Disk correct size that has no associated partitions.
+
+$ lsblk
+
+//terminal prints
+//name, maj:min, rm, size, ro, type, mountpoints
+
+//check the sda, sda1, sda2, sda3, sr0, sr1
+//other prints: vda, vda1, vda2, vda3
+
+//note
+//remember to check lsblk every time you reconnect to your server before making changes. 
+// the /dev/sd* and /dev/hd* disk identifiers will not necessarily be consistent between boots, which means there is some danger of partitioning or formatting the wrong disk if you do not verify the disk identifier correctly.
+//consider using more persistent disk identifiers like /dev/disk/by-uuid, /dev/disk/by-label, or /dev/disk/by-id. 
