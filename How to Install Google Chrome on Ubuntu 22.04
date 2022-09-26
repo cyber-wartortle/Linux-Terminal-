@@ -1,0 +1,29 @@
+############################################# NOTE INSTALLATION OF GOOGLE CHROME ON UBUNTU 22.04  USING LINUX TERMINAL/CONSOLE################################
+
+
+#STEP 1 : UPDATE APT
+
+$ sudo apt update
+
+#STEP 2 : INSTALL WGET
+
+$ sudo apt install wget
+
+#STEP 3 : DOWNLOAD LATEST PACKAGE
+
+$ wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+
+#STEP 4 : INSTALL THE PACKAGE
+
+$ sudo dpkg -i google-chrome-stable_current_amd64.deb
+
+//Google Chrome has been successfully installed on your system.
+
+#STEP 5 : RUN THE GOOGLE CHROME
+
+$ google-chrome
+
+############################################# OTHER NOTES ON INSTALLATION OF GOOGLE CHROME ###################################################################
+
+//INSTALLATION OF GOOGLE CHROME ON UBUNTU 22.04  USING GUI
+//Except to encounter potential issue. opt for installation using terminal.console
