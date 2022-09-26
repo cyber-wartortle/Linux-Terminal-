@@ -28,7 +28,7 @@ $ sudo apt update
 
 $ sudo apt install parted
 
-//terminal prints
+//Terminal prints
 //reading package lists, building dependency tree, reading state information.
 //parted is already the newest version (3.4-2build1).
 
@@ -37,9 +37,9 @@ $ sudo apt install parted
 
 $ sudo parted -l | grep Error
 
-//it will produce an error for any disks that don’t have a valid partition scheme. This unrecognized disk label error means for the new, unpartitioned disk
+//note : it will produce an error for any disks that don’t have a valid partition scheme. This unrecognized disk label error means for the new, unpartitioned disk
 
-//terminal prints
+//Terminal prints
 //Warning: Unable to open /dev/sr0 read-write (Read-only file system).  /dev/sr0 has been opened read-only. e
 //Error: /dev/sr0 : unrecognized disk label.
 //Warning: Unable to open /dev/sr1 read-write (Read-only file system).  /dev/sr1 has been opened read-only. e
@@ -50,14 +50,21 @@ $ sudo parted -l | grep Error
 
 $ lsblk
 
-//terminal prints
+//Terminal prints
 //name, maj:min, rm, size, ro, type, mountpoints
 
 //check name that the kernel assigned to your disk. example: sda, sda1, sda2, sda3, sr0, sr1
 //other prints: vda, vda1, vda2, vda3
 //select the kernel name you prefered to parition
 
-//note
+//note : 
 //remember to check lsblk every time you reconnect to your server before making changes. 
 // the /dev/sd* and /dev/hd* disk identifiers will not necessarily be consistent between boots, which means there is some danger of partitioning or formatting the wrong disk if you do not verify the disk identifier correctly.
 //consider using more persistent disk identifiers like /dev/disk/by-uuid, /dev/disk/by-label, or /dev/disk/by-id. 
+
+
+#Step 6 : 
+
+sudo parted /dev/sda mklabel gpt
+
+//note: Do not perform in VMWARE Virtual Machine. This will crash your system.
