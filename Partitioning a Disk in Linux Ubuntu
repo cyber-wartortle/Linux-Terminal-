@@ -1,3 +1,6 @@
+################################################# NOTE: THIS TERMINAL LINUX COMMANDS ARE PERFORMED IN UBUNTU VERSION 22.04.1 LTS ######################################
+
+
 #Step 1 : Check the list available storage devices and partitions             
 
 $ sudo part - l
@@ -9,6 +12,7 @@ $ sudo part - l
 //The first storage disk (dev/sda or dev/vda) contains the operating system. Creating a partition on this disk can make your system unbootable. 
 //Only create partitions on secondary disks (dev/sdb, dev/sdc, dev/vdb, or dev/vdc).
 
+
 #Step 2: Update the package
 
 $ sudo apt update
@@ -19,6 +23,7 @@ $ sudo apt update
 //Reading package list, Building dependency tree, Reading state information.
 //105 packages can be upgrade. Run 'apt list --upgradable' to see them.
 
+
 #Step 3: Install parted utility
 
 $ sudo apt install parted
@@ -26,6 +31,7 @@ $ sudo apt install parted
 //terminal prints
 //reading package lists, building dependency tree, reading state information.
 //parted is already the newest version (3.4-2build1).
+
 
 #Step 4: Check absence partitioning scheme 
 
@@ -47,8 +53,9 @@ $ lsblk
 //terminal prints
 //name, maj:min, rm, size, ro, type, mountpoints
 
-//check the sda, sda1, sda2, sda3, sr0, sr1
+//check name that the kernel assigned to your disk. example: sda, sda1, sda2, sda3, sr0, sr1
 //other prints: vda, vda1, vda2, vda3
+//select the kernel name you prefered to parition
 
 //note
 //remember to check lsblk every time you reconnect to your server before making changes. 
