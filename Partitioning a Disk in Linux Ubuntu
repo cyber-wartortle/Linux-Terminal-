@@ -67,4 +67,4 @@ $ lsblk
 
 sudo parted /dev/sda mklabel gpt
 
-//note: Do not perform in VMWARE Virtual Machine. This will crash your system.
+//note: Do not boot the system after partitioning. This will unable to restart your system and Virtual Machine will crash even when you create new one.
